@@ -9,8 +9,7 @@ import com.a225.thread.GameMusicPlayer;
 /**
  * 游戏启动入口
  * @ClassName: GameStart  
- * @Description:  
- * @author: WeiXiao
+ * @Description:
  * @CreateDate: 2019年4月8日 下午4:17:37
  */
 public class GameStart {
@@ -36,6 +35,9 @@ public class GameStart {
 		//音乐播放
 		GameMusicPlayer musicPlayer = new GameMusicPlayer();
 		musicPlayer.start();
+
+
+		//12321312321
 	}
 	
 	/**
