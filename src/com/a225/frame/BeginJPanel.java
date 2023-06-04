@@ -80,6 +80,8 @@ public class BeginJPanel extends JPanel{
 		magicBoxButton.addActionListener(new ActionListener() {
 			
 			@Override
+
+
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				if(!jLabel2.isVisible())
