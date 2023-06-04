@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/a225/frame/BeginJPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/frame/GameFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/frame/GameJPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/main/GameController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/main/GameStart.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/loader/ElementLoader.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/manager/ElementManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/manager/GameMap.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/pro/stage1/Map.pro" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/thread/GameKeyListener.java" charset="GBK" />
+  </component>
+</project>
