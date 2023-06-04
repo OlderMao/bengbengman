@@ -36,7 +36,6 @@ public class GameStart {
 		GameMusicPlayer musicPlayer = new GameMusicPlayer();
 		musicPlayer.start();
 
-
 		//12321312321
 	}
 	
