@@ -5,6 +5,7 @@ import com.a225.model.loader.ElementLoader;
 import com.a225.thread.GameMusicPlayer;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * 游戏启动入口
@@ -36,11 +37,9 @@ public class GameStart {
 
     /**
      * 界面切换
-     *
-     * @param panelName 界面名称
      */
     public static void changeJPanel(String panelName) {
-        if (panelName == "game") {
+        if (Objects.equals(panelName, "game")) {
             GameController.setGameRunning(true);
             gameFrame.addListener();
         } else {

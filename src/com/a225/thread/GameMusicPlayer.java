@@ -15,7 +15,7 @@ public class GameMusicPlayer extends Thread {
     private final List<String> files;
 
     public GameMusicPlayer() {
-        files = new ArrayList<String>();
+        files = new ArrayList<>();
         files.add("music/bgm0.wav");
         files.add("music/bgm1.wav");
         files.add("music/bgm2.wav");
@@ -35,7 +35,6 @@ public class GameMusicPlayer extends Thread {
                 File file = new File(files.get(i));
                 InputStream stream = new FileInputStream(file);
                 InputStream bufferedIn = new BufferedInputStream(stream);
-
                 AudioInputStream is = AudioSystem.getAudioInputStream(bufferedIn);
                 AudioFormat format = is.getFormat();
                 SourceDataLine line = AudioSystem.getSourceDataLine(format);
