@@ -72,8 +72,6 @@ public class BeginJPanel extends JPanel {
         this.add(magicBoxButton);
         this.add(jLabel2);
         this.add(jLabel);
-
-
         this.setVisible(true);
         this.setOpaque(true);
     }

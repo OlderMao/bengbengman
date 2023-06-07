@@ -16,16 +16,13 @@ public class BubbleExplode extends SuperElement {
     private static final ImageIcon imgDown = ElementLoader.getElementLoader().getImageMap().get("explodeDown");
     private static final ImageIcon imgLeft = ElementLoader.getElementLoader().getImageMap().get("explodeLeft");
     private static final ImageIcon imgRight = ElementLoader.getElementLoader().getImageMap().get("explodeRight");
-
-
+    private final int power;//爆炸威力
     //炸弹在地图中往四个方向延申的步数
     private int up;
     private int down;
     private int left;
     private int right;
-
-    private final int power;//爆炸威力
-    private int playerNum;//爆炸炸弹属于的玩家
+    private final int playerNum;//爆炸炸弹属于的玩家
 
 
     public BubbleExplode(int x, int y, int w, int h, int power, int playerNum) {
@@ -109,20 +106,12 @@ public class BubbleExplode extends SuperElement {
         int bi = 0;
         int bj = 0;
         switch (direction) {
-            case "up":
-                bi = -1;
-                break;
-            case "down":
-                bi = 1;
-                break;
-            case "left":
-                bj = -1;
-                break;
-            case "right":
-                bj = 1;
-                break;
-            default:
-                break;
+            case "up" -> bi = -1;
+            case "down" -> bi = 1;
+            case "left" -> bj = -1;
+            case "right" -> bj = 1;
+            default -> {
+            }
         }
         //获取地图
         GameMap gameMap = ElementManager.getManager().getGameMap();
@@ -142,7 +131,6 @@ public class BubbleExplode extends SuperElement {
         }
         return step;
     }
-
 
     //获取爆炸范围up down left right
     public void setMoveStep() {
@@ -168,32 +156,17 @@ public class BubbleExplode extends SuperElement {
         return down;
     }
 
-    public void setDown(int down) {
-        this.down = down;
-    }
-
     public int getLeft() {
         return left;
-    }
-
-    public void setLeft(int left) {
-        this.left = left;
     }
 
     public int getRight() {
         return right;
     }
 
-    public void setRight(int right) {
-        this.right = right;
-    }
 
     public int getPlayerNum() {
         return playerNum;
-    }
-
-    public void setPlayerNum(int playerNum) {
-        this.playerNum = playerNum;
     }
 
 

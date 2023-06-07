@@ -15,7 +15,6 @@ import java.util.*;
 
 /***
  * NPC类
- * @ClassName: Npc
  * @Description: 机器人，用于添加游戏乐趣。实现自动寻路、放炸弹、躲炸弹。
  */
 public class Npc extends Character {
@@ -24,9 +23,9 @@ public class Npc extends Character {
     private final Random random;
     private final List<ImageIcon> imgList;
     private int moveX;//记录图片索引
-    private int imgW;//图片宽
-    private int imgH;//图片高
-    private int npcNum;//记录第几个npc，2为npcA，3为npcB,4为npcC
+    private final int imgW;//图片宽
+    private final int imgH;//图片高
+    private final int npcNum;//记录第几个npc，2为npcA，3为npcB,4为npcC
     private int step; //控制npc步伐节奏
     private String[][] dangerZone;//不可走区域
     private boolean[][] book;//bfs数组
@@ -90,22 +89,6 @@ public class Npc extends Character {
             }
         }
     }
-
-    private void autoAddBubble() {
-        GameMap gameMap = ElementManager.getManager().getGameMap();
-        List<Integer> loc = GameMap.getIJ(getX(), getY());
-        Vector<MoveTypeEnum> oldPath = new Vector<>();
-        oldPath.addAll(path);
-        gameMap.setBlockSquareType(loc, GameMap.SquareType.BUBBLE);
-        boolean find = findSafePath();
-        gameMap.setBlockSquareType(loc, GameMap.SquareType.FLOOR);
-        if (find && getBubbleLargest() - getBubbleNum() > 0 && Math.random() < 0.1) {
-            addBubble();
-        } else {
-            path.clear();
-            path.addAll(oldPath);
-        }
-	}
 
     private String[][] getDangerZone() {
         String[][] dangerZone = new String[GameMap.getMapRows()][GameMap.getMapCols()];
@@ -265,12 +248,12 @@ public class Npc extends Character {
         dangerZone = getDangerZone();
         int i = loc.get(0);
         int j = loc.get(1);
-		return (dangerZone[i + 1][j].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i + 1, j))
-				&& (dangerZone[i - 1][j].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i - 1, j))
-				&& (dangerZone[i][j + 1].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i, j + 1))
-				&& (dangerZone[i][j - 1].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i, j - 1))
-				&& !dangerZone[i][j].equals(DANGER_MARKER);
-	}
+        return (dangerZone[i + 1][j].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i + 1, j))
+                && (dangerZone[i - 1][j].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i - 1, j))
+                && (dangerZone[i][j + 1].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i, j + 1))
+                && (dangerZone[i][j - 1].equals(DANGER_MARKER) || !gameMap.blockIsWalkable(i, j - 1))
+                && !dangerZone[i][j].equals(DANGER_MARKER);
+    }
 
     @Override
     public void move() {
@@ -313,20 +296,12 @@ public class Npc extends Character {
         int tx = getX();
         int ty = getY();
         switch (moveType) {
-            case LEFT:
-                tx -= speed;
-                break;
-            case RIGHT:
-                tx += speed;
-                break;
-            case TOP:
-                ty -= speed;
-                break;
-            case DOWN:
-                ty += speed;
-                break;
-            default:
-                break;
+            case LEFT -> tx -= speed;
+            case RIGHT -> tx += speed;
+            case TOP -> ty -= speed;
+            case DOWN -> ty += speed;
+            default -> {
+            }
         }
         boolean det1 = crashDetection(tx, ty, ElementManager.getManager().getElementList("obstacle"));
         boolean det2 = crashDetection(tx, ty, ElementManager.getManager().getElementList("fragility"));
@@ -336,33 +311,30 @@ public class Npc extends Character {
             setX(tx);
             setY(ty);
             step++;
-        } else {
-            //moveType = randomOrient();
         }
+
 
     }
 
     private boolean bubbleCrashDetection(int tx, int ty, List<SuperElement> list) {
         for (SuperElement se : list) {
             switch (moveType) {
-                case TOP:
-                case DOWN:
+                case TOP, DOWN -> {
                     if (Utils.between(getBottomBound(), se.getTopBound(), se.getBottomBound())
                             || Utils.between(getTopBound(), se.getTopBound(), se.getBottomBound())
                             || (getBottomBound() == se.getBottomBound() && getTopBound() == se.getTopBound())) {
                         return true;
                     }
-                    break;
-                case LEFT:
-                case RIGHT:
+                }
+                case LEFT, RIGHT -> {
                     if (Utils.between(getLeftBound(), se.getLeftBound(), se.getRightBound())
                             || Utils.between(getRightBound(), se.getLeftBound(), se.getRightBound())
                             || (getLeftBound() == se.getLeftBound() && getRightBound() == se.getRightBound())) {
                         return true;
                     }
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
         }
         return crashDetection(tx, ty, list);
@@ -370,21 +342,11 @@ public class Npc extends Character {
 
     private void updateImage() {
         switch (moveType) {
-            case STOP:
-                moveX = 0;
-                break;
-            case LEFT:
-                moveX = 1;
-                break;
-            case RIGHT:
-                moveX = 2;
-                break;
-            case TOP:
-                moveX = 3;
-                break;
-            case DOWN:
-                moveX = 0;
-                break;
+            case STOP -> moveX = 0;
+            case LEFT -> moveX = 1;
+            case RIGHT -> moveX = 2;
+            case TOP -> moveX = 3;
+            case DOWN -> moveX = 0;
         }
     }
 
@@ -428,37 +390,13 @@ public class Npc extends Character {
         }
     }
 
-    public int getMoveX() {
-        return moveX;
-    }
-
-    public void setMoveX(int moveX) {
-        this.moveX = moveX;
-    }
-
-    public int getNpcNum() {
-        return npcNum;
-    }
-
-    public void setNpcNum(int npcNum) {
-        this.npcNum = npcNum;
-    }
 
     public int getImgW() {
         return imgW;
     }
 
-    public void setImgW(int imgW) {
-        this.imgW = imgW;
-    }
-
     public int getImgH() {
         return imgH;
     }
-
-    public void setImgH(int imgH) {
-        this.imgH = imgH;
-    }
-
 
 }

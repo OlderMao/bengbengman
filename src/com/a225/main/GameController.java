@@ -2,8 +2,6 @@ package com.a225.main;
 
 /**
  * 游戏控制信息类
- *
- * @ClassName: GameController
  */
 public class GameController {
     private static boolean gameRunning = false;

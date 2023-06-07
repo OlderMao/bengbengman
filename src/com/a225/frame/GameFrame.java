@@ -56,7 +56,6 @@ public class GameFrame extends JFrame {
         layout.show(contentPane, name);
     }
 
-
     //	游戏启动
     public void startGame() {
         //新建游戏面板

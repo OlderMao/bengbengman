@@ -7,9 +7,6 @@ import java.awt.*;
 
 /**
  * 地图方块类
- *
- * @ClassName: MapSquare
- * @Description: 地图方块VO类
  */
 public class MapSquare extends SuperElement {
     public final static int PIXEL_X = 64;//单位像素x

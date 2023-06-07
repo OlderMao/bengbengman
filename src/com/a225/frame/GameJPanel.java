@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-
 /**
  * 游戏面板
  * 窗体容器：画板类
@@ -67,6 +66,5 @@ public class GameJPanel extends JPanel implements Runnable {
             s = Integer.toString(second);
         g.drawString("Time: " + m + ":" + s, 0, 3 * MapSquare.PIXEL_Y);
     }
-
 
 }

@@ -11,7 +11,6 @@ import java.util.TimerTask;
 /**
  * 角色类
  *
- * @ClassName: Character
  * @Description:为玩家和电脑的父类，保存玩家与电脑共有的属性和方法
  */
 public class Character extends SuperElement {
@@ -103,16 +102,16 @@ public class Character extends SuperElement {
     public void setOtherStop(int lastTime) {
 //		除了自己以外的玩家
         List<SuperElement> playerList = ElementManager.getManager().getElementList("player");
-        for (int i = 0; i < playerList.size(); i++) {
-            Player player = (Player) playerList.get(i);
+        for (SuperElement element : playerList) {
+            Player player = (Player) element;
             if (player != this) {
                 player.setSpeed(0);
                 setSpeedToInital(lastTime, player);
             }
         }
         List<SuperElement> NPCList = ElementManager.getManager().getElementList("npc");
-        for (int i = 0; i < NPCList.size(); i++) {
-            Npc npc = (Npc) NPCList.get(i);
+        for (SuperElement superElement : NPCList) {
+            Npc npc = (Npc) superElement;
             if (npc != this) {
                 npc.setSpeed(0);
                 setSpeedToInital(lastTime, npc);
@@ -218,29 +217,16 @@ public class Character extends SuperElement {
         this.moveType = moveType;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
 
     public void setSpeed(int speed) {
         this.speed = speed;
     }
 
-    public int getSpeedItemCount() {
-        return speedItemCount;
-    }
-
-    public void setSpeedItemCount(int speedItemCount) {
-        this.speedItemCount = speedItemCount;
-    }
 
     public int getBubblePower() {
         return bubblePower;
     }
 
-    public void setBubblePower(int bubblePower) {
-        this.bubblePower = bubblePower;
-    }
 
     public int getBubbleNum() {
         return bubbleNum;
@@ -266,32 +252,4 @@ public class Character extends SuperElement {
         this.score = score;
     }
 
-
-    public int getChangeDirectionCount() {
-        return changeDirectionCount;
-    }
-
-    public void setChangeDirectionCount(int changeDirectionCount) {
-        this.changeDirectionCount = changeDirectionCount;
-    }
-
-    public int getStopitemCount() {
-        return stopitemCount;
-    }
-
-    public void setStopitemCount(int stopitemCount) {
-        this.stopitemCount = stopitemCount;
-    }
-
-    public int getHeathPoint() {
-        return heathPoint;
-    }
-
-    public boolean isisUnstoppable() {
-        return isUnstoppable;
-    }
-
-    public void setisUnstoppable(boolean unstoppable) {
-        this.isUnstoppable = unstoppable;
-    }
 }

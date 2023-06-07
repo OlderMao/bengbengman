@@ -16,16 +16,15 @@ import java.util.Random;
 /**
  * 玩家类
  *
- * @ClassName: Player
  * @Description: 玩家VO类
  */
 public class Player extends Character {
+    private final int playerNum;//记录第几个玩家，0为玩家一，1为玩家二
     private ImageIcon img;
     private int moveX;
     private int moveY;
     private boolean attack;//记录攻击状态，默认为false
     private boolean keepAttack;//记录是否为一直按着攻击键，实现一次按键只放一个水泡
-    private final int playerNum;//记录第几个玩家，0为玩家一，1为玩家二
 
     //构造函数
     public Player(int x, int y, int w, int h, ImageIcon img, int playerNum) {
@@ -123,24 +122,22 @@ public class Player extends Character {
     private boolean bubbleCrashDetection(int tx, int ty, List<SuperElement> list) {
         for (SuperElement se : list) {
             switch (moveType) {
-                case TOP:
-                case DOWN:
+                case TOP, DOWN -> {
                     if (Utils.between(getBottomBound(), se.getTopBound(), se.getBottomBound())
                             || Utils.between(getTopBound(), se.getTopBound(), se.getBottomBound())
                             || (getBottomBound() == se.getBottomBound() && getTopBound() == se.getTopBound())) {
                         return true;
                     }
-                    break;
-                case LEFT:
-                case RIGHT:
+                }
+                case LEFT, RIGHT -> {
                     if (Utils.between(getLeftBound(), se.getLeftBound(), se.getRightBound())
                             || Utils.between(getRightBound(), se.getLeftBound(), se.getRightBound())
                             || (getLeftBound() == se.getLeftBound() && getRightBound() == se.getRightBound())) {
                         return true;
                     }
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
         }
         return crashDetection(tx, ty, list);
@@ -165,11 +162,9 @@ public class Player extends Character {
             Rectangle elementRect = new Rectangle(se.getX() + bias, se.getY() + bias, se.getW() - bias, se.getH() - bias);
             if (playerRect.intersects(elementRect)) {//如果碰撞
                 switch (moveType) {//判断方向
-                    case TOP:
-                    case DOWN:
+                    case TOP, DOWN -> {
                         int width = Math.min(getX() + getW(), se.getX() + se.getW()) - Math.max(getX(), se.getX());
                         if (width > THRESHOLD) break;//超过阈值不做平滑处理
-
                         if (getX() < se.getX()) {//玩家在左边
                             if (moveType == MoveTypeEnum.TOP && !gameMap.blockIsWalkable(GameMap.getIJ(getLeftBound(), getTopBound() - 10)))
                                 break;
@@ -189,12 +184,10 @@ public class Player extends Character {
                                     setX(getX() + 1);
                             }
                         }
-                        break;
-                    case LEFT:
-                    case RIGHT:
+                    }
+                    case LEFT, RIGHT -> {
                         int height = Math.min(getY() + getH(), se.getY() + se.getH()) - Math.max(getY(), se.getY());
                         if (height > THRESHOLD) break;
-
                         if (getY() < se.getY()) {//玩家在上面
                             if (moveType == MoveTypeEnum.LEFT && !gameMap.blockIsWalkable(GameMap.getIJ(getLeftBound() - 10, getTopBound())))
                                 break;
@@ -214,9 +207,9 @@ public class Player extends Character {
                                     setY(getY() + 1);
                             }
                         }
-                        break;
-                    default:
-                        break;
+                    }
+                    default -> {
+                    }
                 }
                 return false;
             }
@@ -246,20 +239,12 @@ public class Player extends Character {
             moveX = 0;
 
         switch (moveType) {
-            case TOP:
-                moveY = 3;
-                break;
-            case LEFT:
-                moveY = 1;
-                break;
-            case RIGHT:
-                moveY = 2;
-                break;
-            case DOWN:
-                moveY = 0;
-                break;
-            default:
-                break;
+            case TOP -> moveY = 3;
+            case LEFT -> moveY = 1;
+            case RIGHT -> moveY = 2;
+            case DOWN -> moveY = 0;
+            default -> {
+            }
         }
     }
 
@@ -293,25 +278,6 @@ public class Player extends Character {
         this.img = img;
     }
 
-    public int getMoveX() {
-        return moveX;
-    }
-
-    public void setMoveX(int moveX) {
-        this.moveX = moveX;
-    }
-
-    public int getMoveY() {
-        return moveY;
-    }
-
-    public void setMoveY(int moveY) {
-        this.moveY = moveY;
-    }
-
-    public boolean isAttack() {
-        return attack;
-    }
 
     public void setAttack(boolean attack) {
         this.attack = attack;

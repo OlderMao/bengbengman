@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * µÿÕº’œ∞≠ŒÔ¿‡
- *
- * @ClassName: MapObstacle
- * @Description:
  */
 public class MapObstacle extends MapSquare {
 
@@ -25,8 +22,7 @@ public class MapObstacle extends MapSquare {
         int dy = Integer.parseInt(data.get(4));
         int scaleX = Integer.parseInt(data.get(6));
         int scaleY = Integer.parseInt(data.get(7));
-        MapObstacle mapObstacle = new MapObstacle(i, j, img, sx, sy, dx, dy, scaleX, scaleY);
-        return mapObstacle;
+        return new MapObstacle(i, j, img, sx, sy, dx, dy, scaleX, scaleY);
     }
 
     @Override

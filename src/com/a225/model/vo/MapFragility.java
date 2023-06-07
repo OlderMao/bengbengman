@@ -11,9 +11,6 @@ import java.util.Random;
 
 /**
  * 地图可破坏物体类
- *
- * @ClassName: MapFragility
- * @Description:
  */
 public class MapFragility extends MapSquare {
     private boolean destoried;
@@ -31,8 +28,7 @@ public class MapFragility extends MapSquare {
         int dy = Integer.parseInt(data.get(4));
         int scaleX = Integer.parseInt(data.get(6));
         int scaleY = Integer.parseInt(data.get(7));
-        MapFragility mapMapFragility = new MapFragility(i, j, img, sx, sy, dx, dy, scaleX, scaleY);
-        return mapMapFragility;
+        return new MapFragility(i, j, img, sx, sy, dx, dy, scaleX, scaleY);
     }
 
     @Override

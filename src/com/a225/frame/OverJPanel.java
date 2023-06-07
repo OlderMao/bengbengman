@@ -51,7 +51,7 @@ public class OverJPanel extends JPanel {
         result.setBorderPainted(false);
         result.setContentAreaFilled(false);
         result.setEnabled(false);
-        result.setForeground(new Color(255, 153, 0));
+        result.setForeground(new Color(255, 242, 0));
 
         this.add(result);
         this.add(restart);

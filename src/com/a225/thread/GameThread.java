@@ -103,10 +103,10 @@ public class GameThread extends Thread {
             }
         }
         for (SuperElement npc : npcList) {
-			if (!((Npc) npc).isDead()) {
-				allDead = false;
-				break;
-			}
+            if (!((Npc) npc).isDead()) {
+                allDead = false;
+                break;
+            }
         }
 
         //Íæ¼ÒÊ§°Ü

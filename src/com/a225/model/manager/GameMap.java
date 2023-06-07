@@ -13,7 +13,6 @@ import java.util.Map;
 /**
  * 地图类
  *
- * @ClassName: Map
  * @Description: 地图类
  */
 public class GameMap {
@@ -259,7 +258,7 @@ public class GameMap {
         if (outOfBoundary(i, j)) return true;
 
         String type = mapList.get(i).get(j);
-		return type.charAt(0) == SquareType.OBSTACLE.value;
+        return type.charAt(0) == SquareType.OBSTACLE.value;
     }
 
     /**
@@ -270,9 +269,9 @@ public class GameMap {
      */
     public boolean blockIsWalkable(List<Integer> list) {
         String type = mapList.get(list.get(0)).get(list.get(1));
-		return type.charAt(0) != SquareType.OBSTACLE.value
-				&& type.charAt(0) != SquareType.FRAGILITY.value
-				&& type.charAt(0) != SquareType.ITEM.value;
+        return type.charAt(0) != SquareType.OBSTACLE.value
+                && type.charAt(0) != SquareType.FRAGILITY.value
+                && type.charAt(0) != SquareType.ITEM.value;
     }
 
     /**
@@ -283,9 +282,9 @@ public class GameMap {
      */
     public boolean blockIsWalkable(int i, int j) {
         String type = mapList.get(i).get(j);
-		return type.charAt(0) != SquareType.OBSTACLE.value
-				&& type.charAt(0) != SquareType.FRAGILITY.value
-				&& type.charAt(0) != SquareType.ITEM.value;
+        return type.charAt(0) != SquareType.OBSTACLE.value
+                && type.charAt(0) != SquareType.FRAGILITY.value
+                && type.charAt(0) != SquareType.ITEM.value;
     }
 
     /**
@@ -296,7 +295,7 @@ public class GameMap {
      * @return 是否超出边界
      */
     public boolean outOfBoundary(int i, int j) {
-		return i < 0 || i >= mapRows || j < 0 || j >= mapCols;
+        return i < 0 || i >= mapRows || j < 0 || j >= mapCols;
     }
 
     /**

@@ -8,8 +8,6 @@ import java.io.IOException;
 
 /**
  * 游戏启动入口
- *
- * @ClassName: GameStart
  */
 public class GameStart {
     private static GameFrame gameFrame;

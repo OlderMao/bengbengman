@@ -16,12 +16,12 @@ import java.util.TimerTask;
  */
 public class Bubble extends SuperElement {
 
-    private ImageIcon img;
-    private int moveX;
     private final int playerNum;//表示对应玩家的炸弹，0为玩家一，1为玩家二，2为npcA，3为npcB，4为npcC
     private final int imgW;
     private final int imgH;
     private final int power;
+    private ImageIcon img;
+    private int moveX;
 
     //构造函数
     public Bubble(int x, int y, int w, int h, ImageIcon img, int imgW, int imgH, int playerNum, int power) {
@@ -122,18 +122,6 @@ public class Bubble extends SuperElement {
 
     public void setImg(ImageIcon img) {
         this.img = img;
-    }
-
-    public int getMoveX() {
-        return moveX;
-    }
-
-    public void setMoveX(int moveX) {
-        this.moveX = moveX;
-    }
-
-    public int getPlayerNum() {
-        return this.playerNum;
     }
 
     public int getPower() {

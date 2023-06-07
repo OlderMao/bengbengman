@@ -12,10 +12,10 @@ import java.util.Map;
 import java.util.Random;
 
 public class MagicBox extends MapSquare {
+    private static final Random rd = new Random();
     static Map<String, List<String>> typeMap = ElementLoader.getElementLoader().getSquareTypeMap();
     // 现有各数出现概率
     static Map<String, Integer> keyChanceMap = new HashMap<String, Integer>();
-    private static final Random rd = new Random();
 
     static {
         keyChanceMap.put("1", 20);// rate = 0.2
@@ -27,9 +27,9 @@ public class MagicBox extends MapSquare {
         keyChanceMap.put("9", 5); // rate = 0.05
     }
 
+    private final String type;//道具类型
     private boolean eaten;//被吃掉消失。
     private int moveX;//图片变换
-    private final String type;//道具类型
     private int characterIndex;//哪个player获得道具0-1玩家2-4电脑
 
     public MagicBox(int i, int j, ImageIcon img,
@@ -123,30 +123,22 @@ public class MagicBox extends MapSquare {
                 character = (Character) npcList.get(characterIndex - 2);
             }
             switch (type) {
-                case "31": //使移动反向 10s
-                    character.changeDirection(10);//传入方向改变的持续时间（秒）
-                    break;
-                case "33": //增加生命值
-                    character.setHealthPoint(1);//传入增加的生命值个数
-                    break;
-                case "34": //增加移动速度 10s
-                    character.changeSpeed(2, 10);//传入移速增加倍数和持续时间（秒）
-                    break;
-                case "35": //气泡个数增加
-                    character.setBubbleLargest(character.getBubbleLargest() + 1);
-                    break;
-                case "37": //其他玩家停止5s
-                    character.setOtherStop(5);
-                    break;
-                case "38": //威力增加
-                    character.bubbleAddPower();//传入方向改变的持续时间（秒）
-                    break;
-                case "39"://无敌5s
-                    character.setUnstoppable(5);//传入方向改变的持续时间（秒）
-                    break;
-                default:
-
-                    break;
+                case "31" -> //使移动反向 10s
+                        character.changeDirection(10);//传入方向改变的持续时间（秒）
+                case "33" -> //增加生命值
+                        character.setHealthPoint(1);//传入增加的生命值个数
+                case "34" -> //增加移动速度 10s
+                        character.changeSpeed(2, 10);//传入移速增加倍数和持续时间（秒）
+                case "35" -> //气泡个数增加
+                        character.setBubbleLargest(character.getBubbleLargest() + 1);
+                case "37" -> //其他玩家停止5s
+                        character.setOtherStop(5);
+                case "38" -> //威力增加
+                        character.bubbleAddPower();//传入方向改变的持续时间（秒）
+                case "39" ->//无敌5s
+                        character.setUnstoppable(5);//传入方向改变的持续时间（秒）
+                default -> {
+                }
             }
 
             eaten = false;
@@ -155,17 +147,8 @@ public class MagicBox extends MapSquare {
 
     }
 
-    //	人物接触道具
-    public boolean isEaten() {
-        return eaten;
-    }
-
     public void setEaten(boolean eaten) {
         this.eaten = eaten;
-    }
-
-    public int getCharacterIndex() {
-        return characterIndex;
     }
 
     public void setCharacterIndex(int characterIndex) {

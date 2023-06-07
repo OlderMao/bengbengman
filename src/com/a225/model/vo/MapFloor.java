@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * µÿÕºµÿ∞Â¿‡
- *
- * @ClassName: MapFloor
- * @Description:
  */
 public class MapFloor extends MapSquare {
     public MapFloor(int i, int j, ImageIcon img, int sx, int sy, int dx, int dy, int scaleX, int scaleY) {

@@ -16,10 +16,6 @@ public abstract class SuperElement {
     //记录是否存活
     private boolean alive;
 
-    //构造函数
-    private SuperElement() {
-    }
-
     public SuperElement(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
@@ -57,13 +53,6 @@ public abstract class SuperElement {
         return r1.intersects(r2);//有交集范围true
     }
 
-    //getters and setters
-    public void setGeometry(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-    }
 
     public int getTopBound() {
         return y;
