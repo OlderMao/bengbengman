@@ -25,7 +25,7 @@ public class GameFrame extends JFrame {
     //	≥ı ºªØ
     protected void init() {
         this.setTitle("±¿±¿man");
-        this.setIconImage(new ImageIcon("img\\bg\\tubiao.png").getImage());
+        this.setIconImage(new ImageIcon("img/bg/icon.png").getImage());
         List<String> data = ElementLoader.getElementLoader().getGameInfoMap().get("windowSize");
         this.setSize(Integer.parseInt(data.get(0)), Integer.parseInt(data.get(1)));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

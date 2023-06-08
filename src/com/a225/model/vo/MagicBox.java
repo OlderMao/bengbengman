@@ -88,7 +88,6 @@ public class MagicBox extends MapSquare {
 
     @Override
     public void update() {
-        // TODO 自动生成的方法存根
         super.update();
         updateImage();
     }

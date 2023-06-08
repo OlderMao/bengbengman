@@ -15,6 +15,7 @@ public class BeginJPanel extends JPanel {
 
     //构造函数
     public BeginJPanel() {
+        //读取窗口大小
         List<String> data = ElementLoader.getElementLoader().getGameInfoMap().get("windowSize");
         this.img = ElementLoader.getElementLoader().getImageMap().get("beginBackground");
         this.w = Integer.parseInt(data.get(0));
@@ -64,7 +65,6 @@ public class BeginJPanel extends JPanel {
         magicBoxButton.setFocusPainted(false);
         magicBoxButton.setContentAreaFilled(false);
         magicBoxButton.addActionListener(arg0 -> {
-            // TODO 自动生成的方法存根
             jLabel2.setVisible(!jLabel2.isVisible());
         });
         this.add(onePlayerButton);
