@@ -22,10 +22,10 @@ public class Npc extends Character {
     final String DANGER_MARKER = "-1";
     private final Random random;
     private final List<ImageIcon> imgList;
-    private int moveX;//记录图片索引
     private final int imgW;//图片宽
     private final int imgH;//图片高
     private final int npcNum;//记录第几个npc，2为npcA，3为npcB,4为npcC
+    private int moveX;//记录图片索引
     private int step; //控制npc步伐节奏
     private String[][] dangerZone;//不可走区域
     private boolean[][] book;//bfs数组

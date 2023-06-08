@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CrazyArcade">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/EXAMPLE/DIST/CrazyArcade.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
