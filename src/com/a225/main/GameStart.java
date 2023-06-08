@@ -47,7 +47,6 @@ public class GameStart {
             gameFrame.removeListener();
         }
         gameFrame.changePanel(panelName);
-
         //强制刷新，否则监听无效
         gameFrame.setVisible(false);
         gameFrame.setVisible(true);
