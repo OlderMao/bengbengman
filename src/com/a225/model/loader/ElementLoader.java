@@ -136,7 +136,6 @@ public class ElementLoader {
 
     /**
      * 将配置项按照指定字符串切割后转为字符串List
-     *
      * @param info 配置项字符串
      * @return 切割后的字符串List
      */
@@ -154,15 +153,6 @@ public class ElementLoader {
 
     public Map<String, List<String>> getSquareTypeMap() {
         return squareTypeMap;
-    }
-
-    //返回窗口w,h,windowSize[0]=w
-    public List<Integer> getWindowSize() {
-        List<String> data = gameInfoMap.get("windowSize");
-        List<Integer> windowSize = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++)
-            windowSize.add(Integer.parseInt(data.get(i)));
-        return windowSize;
     }
 
 }
