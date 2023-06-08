@@ -60,5 +60,4 @@ public class OverJPanel extends JPanel {
         this.setVisible(true);
         this.setOpaque(true);
     }
-
 }

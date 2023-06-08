@@ -128,10 +128,6 @@ public class GameKeyListener implements KeyListener {
         }
     }
 
-    @Override
     public void keyTyped(KeyEvent arg0) {
-        // TODO 自动生成的方法存根
-
     }
-
 }

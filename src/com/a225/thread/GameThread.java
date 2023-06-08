@@ -45,7 +45,6 @@ public class GameThread extends Thread {
     /**
      * 关卡结束
      * 如果over为真则游戏失败返回界面，否则进入下一关
-     *
      * @param over
      */
     private void overGame(Boolean over) {

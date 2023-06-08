@@ -316,6 +316,7 @@ public class Npc extends Character {
 
     }
 
+    //Õ¨µ¯¼ì²â
     private boolean bubbleCrashDetection(int tx, int ty, List<SuperElement> list) {
         for (SuperElement se : list) {
             switch (moveType) {
