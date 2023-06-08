@@ -39,9 +39,9 @@ public class OverJPanel extends JPanel {
         JButton restart = new JButton();
         restart.setIcon(ElementLoader.getElementLoader().getImageMap().get("rect4"));
         restart.setBounds(w / 2 - 90, h - h / 4, 180, 60);
-        restart.setBorderPainted(false);
-        restart.setFocusPainted(false);
-        restart.setContentAreaFilled(false);
+        restart.setBorderPainted(false); //设置焦点绘制
+        restart.setFocusPainted(false); //设置焦点绘制
+        restart.setContentAreaFilled(false);//设置内容区域已填充
         restart.addActionListener(arg0 -> GameStart.changeJPanel("begin"));
 
         result.setFont(new Font("Times New Roman", Font.BOLD, 48));

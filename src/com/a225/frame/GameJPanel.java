@@ -50,7 +50,6 @@ public class GameJPanel extends JPanel implements Runnable {
                 list.get(i).showElement(g);
             }
         }
-
         g.setFont(new Font("Times New Roman", Font.BOLD, 24));
         int allTime = GameThread.getAllTime() / 1000;
         int munite = allTime / 60;

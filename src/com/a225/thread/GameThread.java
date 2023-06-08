@@ -73,8 +73,6 @@ public class GameThread extends Thread {
             fragilityBoom();
             //电脑与炸弹碰撞死亡
             npcBoom();
-            //电脑与道具碰撞效果，暂时不开启
-            //npcMagicBox();
             //玩家与道具碰撞效果
             playerMagicBox();
             //检测是否玩家全部死亡
@@ -172,7 +170,7 @@ public class GameThread extends Thread {
                     npc.setX(-100);
                     npc.setY(-100);
                     BubbleExplode e = (BubbleExplode) explodeList.get(j);
-                    if (e.getPlayerNum() < 2)//目前只有玩家计分
+                    if (e.getPlayerNum() < 2)//玩家计分
                         ((Player) playerList.get(e.getPlayerNum())).setScore(((Player) playerList.get(e.getPlayerNum())).getScore() + 50);
                 }
             }

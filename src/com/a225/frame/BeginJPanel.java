@@ -12,7 +12,7 @@ public class BeginJPanel extends JPanel {
     private final ImageIcon img;
     private final int w;
     private final int h;
-
+    
     //构造函数
     public BeginJPanel() {
         //读取窗口大小

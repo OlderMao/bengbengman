@@ -38,17 +38,6 @@ public class Player extends Character {
         dead = false;
     }
 
-    public static Player createPlayer(List<String> list, int playerNum) {
-        //list = [PlayerA,x,y,w,h]
-        int x = Integer.parseInt(list.get(1));
-        int y = Integer.parseInt(list.get(2));
-        int w = MapSquare.PIXEL_X;
-        int h = MapSquare.PIXEL_Y;
-        Map<String, ImageIcon> imageMap =
-                ElementLoader.getElementLoader().getImageMap();//获取资源加载器的图片字典
-        return new Player(x, y, w, h, imageMap.get(list.get(0)), playerNum);
-    }
-
     public static Player createPlayer(List<String> data, int i, int j, int playerNum) {
         int x = j * MapSquare.PIXEL_X + GameMap.getBiasX();
         int y = i * MapSquare.PIXEL_Y + GameMap.getBiasY();
