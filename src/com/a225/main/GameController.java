@@ -31,4 +31,5 @@ public class GameController {
     public static void setNpcNum(int npcNum) {
         GameController.npcNum = npcNum;
     }
+
 }

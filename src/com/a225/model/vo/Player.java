@@ -269,7 +269,6 @@ public class Player extends Character {
     }
 
 
-    //gettes and setters
     public ImageIcon getImg() {
         return img;
     }

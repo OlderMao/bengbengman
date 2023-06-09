@@ -9,7 +9,19 @@
     <file url="file://$PROJECT_DIR$/src/com/a225/model/loader/ElementLoader.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/a225/model/manager/ElementManager.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/a225/model/manager/GameMap.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/Character.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/MagicBox.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/MapFloor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/MapFragility.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/MapSquare.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/Npc.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/model/vo/Player.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/pro/Characters.pro" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/pro/Game.pro" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/a225/pro/stage1/Map.pro" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/pro/stage2/Map.pro" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/pro/stage3/Map.pro" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/a225/thread/GameKeyListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/a225/thread/GameThread.java" charset="GBK" />
   </component>
 </project>

@@ -193,8 +193,7 @@ public class Npc extends Character {
         while (!queue.isEmpty()) {
             Point fPoint = queue.poll();
             book[fPoint.i][fPoint.j] = true;
-            if (!dangerZone[fPoint.i][fPoint.j].equals(DANGER_MARKER)
-                    && gameMap.getBlockSquareType(fPoint.i, fPoint.j) != GameMap.SquareType.BUBBLE) {
+            if (!dangerZone[fPoint.i][fPoint.j].equals(DANGER_MARKER) && gameMap.getBlockSquareType(fPoint.i, fPoint.j) != GameMap.SquareType.BUBBLE) {
                 path.clear();
                 path.addAll(fPoint.path);
                 return true;

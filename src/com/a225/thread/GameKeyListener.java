@@ -19,8 +19,7 @@ public class GameKeyListener implements KeyListener {
     private final Stack<Integer> p1PressStack = new Stack<>();
     private final Stack<Integer> p2PressStack = new Stack<>();
     /**
-     * 用栈来解决按键冲突
-     * 每个栈用来存放不同用户的按键，通过判断按键的code来设置移动方向或者攻击
+     * 解决按键冲突
      */
 
     private List<?> list;
