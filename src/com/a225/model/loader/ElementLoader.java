@@ -136,9 +136,6 @@ public class ElementLoader {
 
     /**
      * 将配置项按照指定字符串切割后转为字符串List
-     *
-     * @param info 配置项字符串
-     * @return 切割后的字符串List
      */
     private List<String> infoStringToList(String info) {
         return Arrays.asList(info.split(","));

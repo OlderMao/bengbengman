@@ -221,7 +221,7 @@ public class Npc extends Character {
         GameMap gameMap = ElementManager.getManager().getGameMap();
         boolean go = false;
         List<Integer> ijList = GameMap.getIJ(getX(), getY());
-        //暂时判断前面是地板即可前进，TODO判断前面是Bubble
+        //暂时判断前面是地板即可前进
         switch (m) {
             case LEFT:
                 if (gameMap.blockIsWalkable(ijList.get(0), ijList.get(1) - 1)) go = true;
@@ -362,12 +362,6 @@ public class Npc extends Character {
     }
 
 
-    //随机获得一个方向
-    private MoveTypeEnum randomOrient() {
-        MoveTypeEnum[] moveTypeEnum = {MoveTypeEnum.LEFT, MoveTypeEnum.RIGHT, MoveTypeEnum.TOP, MoveTypeEnum.DOWN};
-
-        return moveTypeEnum[random.nextInt(moveTypeEnum.length)];
-    }
 
     @Override
     public void destroy() {
