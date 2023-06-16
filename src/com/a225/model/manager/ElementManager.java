@@ -8,7 +8,6 @@ import java.util.*;
 
 /**
  * 元素管理器
- * 单例模式
  */
 public class ElementManager {
     //元素管理器单例

@@ -4,7 +4,6 @@ import java.awt.*;
 
 /**
  * 元素父类
- * 所有游戏元素的父类
  */
 public abstract class SuperElement {
 
