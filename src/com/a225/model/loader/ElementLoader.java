@@ -18,14 +18,16 @@ public class ElementLoader {
 
     //构造函数
     private ElementLoader() {
-        properties = new Properties();
-        gameInfoMap = new HashMap<>();
-        imageMap = new HashMap<>();
-        squareTypeMap = new HashMap<>();
+        //初始化
+        properties = new Properties();//配置文件
+        gameInfoMap = new HashMap<>();//游戏信息字典
+        imageMap = new HashMap<>();//图片字典
+        squareTypeMap = new HashMap<>();//方块类型字典
     }
 
     //单例模式
     public static ElementLoader getElementLoader() {
+        //双重检查锁定
         if (elementLoader == null) {
             elementLoader = new ElementLoader();
         }
@@ -34,10 +36,12 @@ public class ElementLoader {
 
     //读取主配置文件
     public void readGamePro() throws IOException {
+        //读取配置文件
         InputStream inputStream = ElementLoader.class.getClassLoader().getResourceAsStream("com/a225/pro/Game.pro");
-        properties.clear();
-        properties.load(inputStream);
+        properties.clear();//清空配置文件
+        properties.load(inputStream);//加载配置文件
         for (Object o : properties.keySet()) {
+            //获取配置项的值
             String info = properties.getProperty(o.toString());
             gameInfoMap.put(o.toString(), infoStringToList(info));
         }
@@ -45,20 +49,18 @@ public class ElementLoader {
 
     //读取图片
     public void readImagePro() throws IOException {
-        InputStream inputStream =
-                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("imageProPath").get(0));
+        InputStream inputStream = ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("imageProPath").get(0));//获取图片配置文件路径
         properties.clear();
-        properties.load(inputStream);
+        properties.load(inputStream);//加载配置文件
         for (Object o : properties.keySet()) {
-            String loc = properties.getProperty(o.toString());
-            imageMap.put(o.toString(), new ImageIcon(loc));
+            String loc = properties.getProperty(o.toString());//获取图片路径
+            imageMap.put(o.toString(), new ImageIcon(loc));//放入Map中
         }
     }
 
     //读取游戏玩家配置
     public void readCharactorsPro() throws IOException {
-        InputStream inputStream =
-                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("charatersPath").get(0));
+        InputStream inputStream = ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("charatersPath").get(0));//获取游戏玩家配置文件路径
         properties.clear();
         properties.load(inputStream);
         for (Object o : properties.keySet()) {
@@ -73,7 +75,7 @@ public class ElementLoader {
         String npc = "";
         for (int i = 0; i < 4; i++) {//4张图片
             npc = s + (char) (i + '0');
-            imageList.add(imageMap.get(npc));
+            imageList.add(imageMap.get(npc));//获取图片
         }
         return imageList;
     }
@@ -82,11 +84,11 @@ public class ElementLoader {
     //读取气泡炸弹和爆炸效果配置Bubble.pro
     public void readBubblePro() throws IOException {
         InputStream inputStream =
-                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("bubblePath").get(0));
+                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("bubblePath").get(0));//获取气泡炸弹和爆炸效果配置文件路径
         properties.clear();
         properties.load(inputStream);
         for (Object o : properties.keySet()) {
-            String info = properties.getProperty(o.toString());
+            String info = properties.getProperty(o.toString());//获取配置项的值
             gameInfoMap.put(o.toString(), infoStringToList(info));//放入Map的value中的是已经分割后的配置项
         }
     }
@@ -95,7 +97,7 @@ public class ElementLoader {
     //读取方块类型信息
     public void readSquarePro() throws IOException {
         InputStream inputStream =
-                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("squareProPath").get(0));
+                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get("squareProPath").get(0));//获取方块类型配置文件路径
         properties.clear();
         properties.load(inputStream);
         for (Object o : properties.keySet()) {
@@ -107,8 +109,7 @@ public class ElementLoader {
     //读取特定地图
     public List<List<String>> readMapPro(String mapPro) throws IOException {
         List<List<String>> mapList = new ArrayList<>();
-        InputStream inputStream =
-                ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get(mapPro).get(0));
+        InputStream inputStream = ElementLoader.class.getClassLoader().getResourceAsStream(gameInfoMap.get(mapPro).get(0));//获取地图配置文件路径
         properties.clear();
         properties.load(inputStream);
         Set<Object> sortSet = new TreeSet<>((o1, o2) -> {
@@ -136,9 +137,6 @@ public class ElementLoader {
 
     /**
      * 将配置项按照指定字符串切割后转为字符串List
-     *
-     * @param info 配置项字符串
-     * @return 切割后的字符串List
      */
     private List<String> infoStringToList(String info) {
         return Arrays.asList(info.split(","));

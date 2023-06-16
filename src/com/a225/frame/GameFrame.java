@@ -1,3 +1,4 @@
+
 package com.a225.frame;
 
 import com.a225.model.loader.ElementLoader;
@@ -27,27 +28,27 @@ public class GameFrame extends JFrame {
         this.setTitle("崩崩man");
         this.setIconImage(new ImageIcon("img/bg/icon.png").getImage());
         List<String> data = ElementLoader.getElementLoader().getGameInfoMap().get("windowSize");
-        this.setSize(Integer.parseInt(data.get(0)), Integer.parseInt(data.get(1)));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
+        this.setSize(Integer.parseInt(data.get(0)), Integer.parseInt(data.get(1)));//设置窗口大小
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//设置关闭方式
+        this.setResizable(false);//设置不可改变大小
+        this.setLocationRelativeTo(null);//设置居中
 
-        keyListener = new GameKeyListener();
+        keyListener = new GameKeyListener();//游戏按键监听器
 
         this.contentPane = new JPanel();
-        this.setContentPane(contentPane);
+        this.setContentPane(contentPane);//设置主面板
 
         this.layout = new CardLayout();
-        this.contentPane.setLayout(layout);
+        this.contentPane.setLayout(layout);//设置布局管理器
 
-        this.beginJPanel = new BeginJPanel();
-        this.contentPane.add("begin", beginJPanel);
+        this.beginJPanel = new BeginJPanel();//开始画板
+        this.contentPane.add("begin", beginJPanel);//添加开始画板
 
-        this.overJPanel = new OverJPanel();
-        this.contentPane.add("over", overJPanel);
+        this.overJPanel = new OverJPanel();//结束画板
+        this.contentPane.add("over", overJPanel);//添加结束画板
 
-        this.layout.show(contentPane, "begin");
-        this.setVisible(true);
+        this.layout.show(contentPane, "begin");//显示开始画板
+        this.setVisible(true);//设置可见
     }
 
 

@@ -17,11 +17,11 @@ public class GameStart {
     public static void main(String[] args) {
         // 资源加载
         try {
-            ElementLoader.getElementLoader().readGamePro();
-            ElementLoader.getElementLoader().readImagePro();
-            ElementLoader.getElementLoader().readCharactorsPro();
-            ElementLoader.getElementLoader().readBubblePro();
-            ElementLoader.getElementLoader().readSquarePro();
+            ElementLoader.getElementLoader().readGamePro();//读取游戏配置文件
+            ElementLoader.getElementLoader().readImagePro();//读取图片配置文件
+            ElementLoader.getElementLoader().readCharactorsPro();//读取人物配置文件
+            ElementLoader.getElementLoader().readBubblePro();//读取泡泡配置文件
+            ElementLoader.getElementLoader().readSquarePro();//读取方块配置文件
         } catch (IOException e) {
             System.out.println("资源加载失败");
             e.printStackTrace();
@@ -40,11 +40,11 @@ public class GameStart {
      */
     public static void changeJPanel(String panelName) {
         if (Objects.equals(panelName, "game")) {
-            GameController.setGameRunning(true);
-            gameFrame.addListener();
+            GameController.setGameRunning(true);//游戏开始
+            gameFrame.addListener();//添加监听
         } else {
-            GameController.setGameRunning(false);
-            gameFrame.removeListener();
+            GameController.setGameRunning(false);//游戏结束
+            gameFrame.removeListener();//移除监听
         }
         gameFrame.changePanel(panelName);
         //强制刷新，否则监听无效
@@ -53,9 +53,10 @@ public class GameStart {
     }
 
     public static void startNewGame() {
-        GameController.setGameRunning(true);
-        gameFrame.startGame();
-        changeJPanel("game");
+        //初始化
+        GameController.setGameRunning(true);//游戏开始
+        gameFrame.startGame();//游戏界面初始化
+        changeJPanel("game");//切换到游戏界面
     }
 
 }

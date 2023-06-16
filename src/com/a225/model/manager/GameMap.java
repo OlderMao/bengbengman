@@ -75,8 +75,8 @@ public class GameMap {
 
     //创建地板
     private void createFloor() {
-        Map<String, List<String>> typeMap = ElementLoader.getElementLoader().getSquareTypeMap();
-        List<SuperElement> floorList = ElementManager.getManager().getElementList("floor");
+        Map<String, List<String>> typeMap = ElementLoader.getElementLoader().getSquareTypeMap();//得到地板类型
+        List<SuperElement> floorList = ElementManager.getManager().getElementList("floor");//得到地板列表
         String type = null;
         //从地图配置文件中得到是哪一种地板
         for (int i = 0; i < mapRows; i++) {
@@ -102,9 +102,9 @@ public class GameMap {
 
     //创建地图元素
     private void createSquare() {
-        Map<String, List<String>> typeMap = ElementLoader.getElementLoader().getSquareTypeMap();
-        Map<String, List<SuperElement>> elmenteMap = ElementManager.getManager().getMap();
-        Map<String, List<String>> gameInfoMap = ElementLoader.getElementLoader().getGameInfoMap();
+        Map<String, List<String>> typeMap = ElementLoader.getElementLoader().getSquareTypeMap();//得到地板类型
+        Map<String, List<SuperElement>> elmenteMap = ElementManager.getManager().getMap();//得到地图元素列表
+        Map<String, List<String>> gameInfoMap = ElementLoader.getElementLoader().getGameInfoMap();//得到游戏信息
         int npcNum = 0;
         for (int i = 0; i < mapRows; i++) {
             for (int j = 0; j < mapCols; j++) {
@@ -112,39 +112,21 @@ public class GameMap {
                 switch (type.charAt(0)) {
                     case '0' -> {
                         if (type.equals("00")) break;//空气墙
-                        elmenteMap.get("obstacle").add(MapObstacle.createMapObstacle(typeMap.get(type), i, j));
+                        elmenteMap.get("obstacle").add(MapObstacle.createMapObstacle(typeMap.get(type), i, j));//障碍物
                     }
                     case '2' ->
-                            elmenteMap.get("fragility").add(MapFragility.createMapFragility(typeMap.get(type), i, j));
+                            elmenteMap.get("fragility").add(MapFragility.createMapFragility(typeMap.get(type), i, j));//可破坏物
                     case '3' -> elmenteMap.get("magicBox").add(MagicBox.createMagicBox(i, j));
                     case '6' -> initPlayer(i, j, 0);
                     case '7' -> {
                         if (GameController.isTwoPlayer())
                             initPlayer(i, j, 1);
                         else {
-                            switch (type.charAt(1)) {
-                                case '1' ->
-                                        elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcA"), i, j, npcNum++));
-                                case '2' ->
-                                        elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcB"), i, j, npcNum++));
-                                case '3' ->
-                                        elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcC"), i, j, npcNum++));
-                                default -> {
-                                }
-                            }
+                            npcNum = getNpcNum(elmenteMap, gameInfoMap, npcNum, i, j, type);
                         }
                     }
                     case '8' -> {
-                        switch (type.charAt(1)) {
-                            case '1' ->
-                                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcA"), i, j, npcNum++));
-                            case '2' ->
-                                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcB"), i, j, npcNum++));
-                            case '3' ->
-                                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcC"), i, j, npcNum++));
-                            default -> {
-                            }
-                        }
+                        npcNum = getNpcNum(elmenteMap, gameInfoMap, npcNum, i, j, type);
                     }
                     default -> {
                     }
@@ -152,6 +134,20 @@ public class GameMap {
             }
         }
         GameController.setNpcNum(npcNum);
+    }
+
+    private int getNpcNum(Map<String, List<SuperElement>> elmenteMap, Map<String, List<String>> gameInfoMap, int npcNum, int i, int j, String type) {
+        switch (type.charAt(1)) {
+            case '1' ->
+                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcA"), i, j, npcNum++));
+            case '2' ->
+                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcB"), i, j, npcNum++));
+            case '3' ->
+                    elmenteMap.get("npc").add(Npc.createNpc(gameInfoMap.get("npcC"), i, j, npcNum++));
+            default -> {
+            }
+        }
+        return npcNum;
     }
 
     public void createMap(String pro) {
@@ -172,10 +168,6 @@ public class GameMap {
 
     /**
      * 按地图加载角色
-     *
-     * @param i
-     * @param j
-     * @param num 编号，玩家1传0，玩家2传1
      */
     private void initPlayer(int i, int j, int num) {
         List<SuperElement> playerList = ElementManager.getManager().getMap().get("player");
@@ -205,10 +197,6 @@ public class GameMap {
 
     /**
      * 获取地图ij点的方块类型
-     *
-     * @param i
-     * @param j
-     * @return 方块类型
      */
     public SquareType getBlockSquareType(int i, int j) {
         String str = mapList.get(i).get(j);
@@ -217,9 +205,6 @@ public class GameMap {
 
     /**
      * 获取地图ij点的方块类型
-     *
-     * @param list ij列表
-     * @return 方块类型
      */
     public SquareType getBlockSquareType(List<Integer> list) {
         String str = mapList.get(list.get(0)).get(list.get(1));
@@ -228,9 +213,6 @@ public class GameMap {
 
     /**
      * 设置地图ij点方块类型
-     *
-     * @param list ij列表
-     * @param type
      */
     public void setBlockSquareType(List<Integer> list, SquareType type) {
         mapList.get(list.get(0)).set(list.get(1), String.valueOf(type.value));
@@ -238,10 +220,6 @@ public class GameMap {
 
     /**
      * 设置地图ij点方块类型
-     *
-     * @param i
-     * @param j
-     * @param type
      */
     public void setBlockSquareType(int i, int j, SquareType type) {
         mapList.get(i).set(j, String.valueOf(type.value));
@@ -249,10 +227,6 @@ public class GameMap {
 
     /**
      * 判断方块是否是障碍物
-     *
-     * @param i
-     * @param j
-     * @return 是否是障碍物
      */
     public boolean blockIsObstacle(int i, int j) {
         if (outOfBoundary(i, j)) return true;
@@ -263,9 +237,6 @@ public class GameMap {
 
     /**
      * 获取ij位置是否可通过
-     *
-     * @param list
-     * @return 可通过
      */
     public boolean blockIsWalkable(List<Integer> list) {
         String type = mapList.get(list.get(0)).get(list.get(1));
@@ -276,9 +247,6 @@ public class GameMap {
 
     /**
      * 获取ij位置是否可通过
-     *
-     * @param list
-     * @return 可通过
      */
     public boolean blockIsWalkable(int i, int j) {
         String type = mapList.get(i).get(j);
@@ -289,10 +257,6 @@ public class GameMap {
 
     /**
      * 判断是否超出边界
-     *
-     * @param i
-     * @param j
-     * @return 是否超出边界
      */
     public boolean outOfBoundary(int i, int j) {
         return i < 0 || i >= mapRows || j < 0 || j >= mapCols;

@@ -3,19 +3,12 @@ package com.a225.thread;
 import com.a225.main.GameController;
 import com.a225.model.manager.ElementManager;
 import com.a225.model.manager.MoveTypeEnum;
-import com.a225.model.vo.Character;
-import com.a225.model.vo.Npc;
 import com.a225.model.vo.Player;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Stack;
-
-import static java.lang.Thread.sleep;
 
 /**
  * ¼üÅÌ¼àÌýÆ÷

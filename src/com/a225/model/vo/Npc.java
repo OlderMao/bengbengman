@@ -172,7 +172,7 @@ public class Npc extends Character {
         dangerZone = getDangerZone();
         book = new boolean[GameMap.getMapRows()][GameMap.getMapCols()];
         GameMap gameMap = ElementManager.getManager().getGameMap();
-        int di = 0, dj = 0;
+        int di, dj;
         do {
             di = (int) (Math.random() * GameMap.getMapRows());
             dj = (int) (Math.random() * GameMap.getMapCols());
@@ -259,7 +259,6 @@ public class Npc extends Character {
     public void move() {
         if (step == MapSquare.PIXEL_X / Character.INIT_SPEED) {
             step = 0;
-            //autoAddBubble();
             autoAttack();
             GameMap gameMap = ElementManager.getManager().getGameMap();
             List<Integer> loc = GameMap.getIJ(getX(), getY());
@@ -362,13 +361,6 @@ public class Npc extends Character {
         return true;
     }
 
-
-    //随机获得一个方向
-    private MoveTypeEnum randomOrient() {
-        MoveTypeEnum[] moveTypeEnum = {MoveTypeEnum.LEFT, MoveTypeEnum.RIGHT, MoveTypeEnum.TOP, MoveTypeEnum.DOWN};
-
-        return moveTypeEnum[random.nextInt(moveTypeEnum.length)];
-    }
 
     @Override
     public void destroy() {
